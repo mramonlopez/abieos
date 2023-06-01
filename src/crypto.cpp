@@ -127,7 +127,11 @@ std::string eosio::public_key_to_string(const public_key& key) {
         return key_to_string(key, "WA", "PUB_WA_");
     } else {
        check(false, convert_json_error(eosio::from_json_error::expected_public_key));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     }
 }
 
@@ -143,7 +147,11 @@ public_key eosio::public_key_from_string(std::string_view s) {
         return string_to_key<public_key>(s.substr(7), key_type::wa, "WA");
     } else {
        check(false, convert_json_error(from_json_error::expected_public_key));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     }
 }
 
@@ -154,7 +162,11 @@ std::string eosio::private_key_to_string(const private_key& private_key) {
         return key_to_string(private_key, "R1", "PVT_R1_");
     else {
        check(false, convert_json_error(from_json_error::expected_private_key));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     }
 }
 
@@ -165,7 +177,11 @@ private_key eosio::private_key_from_string(std::string_view s) {
         return string_to_key<private_key>(s.substr(7), key_type::r1, "R1");
     else if (s.substr(0, 4) == "PVT_") {
        check(false, convert_json_error(from_json_error::expected_private_key));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     } else {
         std::vector<char> whole;
         base58_to_binary(whole, s);
@@ -185,7 +201,11 @@ std::string eosio::signature_to_string(const eosio::signature& signature) {
         return key_to_string(signature, "WA", "SIG_WA_");
     else {
        check(false, convert_json_error(eosio::from_json_error::expected_signature));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     }
 }
 
@@ -198,7 +218,11 @@ signature eosio::signature_from_string(std::string_view s) {
         return string_to_key<signature>(s.substr(7), key_type::wa, "WA");
     else {
        check(false, convert_json_error(eosio::from_json_error::expected_signature));
-       __builtin_unreachable();
+       #ifdef __GNUC__ // GCC, Clang, ICC
+   __builtin_unreachable();
+#elifdef _MSC_VER // MSVC
+   __assume(false);
+#endif
     }
 }
 
