@@ -10,6 +10,7 @@
 #include <variant>
 #include <errno.h>
 #include <map>
+#include <iterator>
 
 namespace eosio {
 enum class from_json_error {

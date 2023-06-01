@@ -132,7 +132,7 @@ class fixed_bytes {
     */
    template <typename T, std::size_t N,
              typename Enable = std::enable_if_t<std::is_unsigned_v<T> && N <= count_words<T>()>>
-   constexpr fixed_bytes(const std::array<T, N>& arr) : value(convert_array<Word>(arr.begin(), arr.end())) {}
+   constexpr fixed_bytes(const std::array<T, N>& arr) : value(convert_array<Word>(&(*(arr.begin())), &(*(arr.end())))) {}
 
    /**
     * Constructor to fixed_bytes object from fixed-sized C array of unsigned integral types.

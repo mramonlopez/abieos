@@ -38,9 +38,9 @@ void to_json(std::string_view sv, S& stream) {
       auto pos = begin;
       while (pos != end && *pos != '"' && *pos != '\\' && (unsigned char)(*pos) >= 32 && *pos != 127) ++pos;
       while (begin != pos) {
-         stream_adaptor s2(begin, static_cast<std::size_t>(pos - begin));
+         stream_adaptor s2(&(*begin), static_cast<int>(pos - begin));
          if (rapidjson::UTF8<>::Validate(s2, s2)) {
-            stream.write(begin, s2.idx);
+            stream.write(&(*begin), s2.idx);
             begin += s2.idx;
          } else {
             ++begin;

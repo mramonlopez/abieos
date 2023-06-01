@@ -162,6 +162,8 @@ void to_json(const name& obj, S& stream) {
    to_json(eosio::name_to_string(obj.value), stream);
 }
 
+#ifdef __GNUC__ // GCC, Clang, ICC
+
 inline namespace literals {
 #if defined(__clang__)
 # pragma clang diagnostic push
@@ -175,5 +177,6 @@ inline namespace literals {
 # pragma clang diagnostic pop
 #endif
 } // namespace literals
+#endif
 
 } // namespace eosio

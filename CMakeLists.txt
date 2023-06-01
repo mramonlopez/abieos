@@ -91,6 +91,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES Clang|AppleClang)
     target_compile_options(test_abieos PRIVATE -Wall -Wextra -Wno-unused-parameter -fcolor-diagnostics)
 endif()
 
+if (CMAKE_CXX_COMPILER_ID MATCHES MSVC)
+    target_compile_options(abieos PRIVATE /Zc:preprocessor)
+    target_compile_options(test_abieos PRIVATE /Zc:preprocessor)
+    target_compile_options(abieos_module PRIVATE /Zc:preprocessor)
+endif()
+
 if (NOT ABIEOS_ONLY_LIBRARY)
 add_subdirectory(tools)
 endif()
