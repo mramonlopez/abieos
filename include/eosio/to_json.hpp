@@ -10,6 +10,7 @@
 #include <rapidjson/encodings.h>
 #include <variant>
 #include <map>
+#include <iso646.h>
 
 namespace eosio {
 
