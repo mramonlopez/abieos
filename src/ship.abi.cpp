@@ -346,8 +346,8 @@ extern const char* const state_history_plugin_abi = R"({
                 { "type": "name", "name": "payer" },
                 { "type": "float64", "name": "secondary_key" }
             ]
-        },
-        {
+        },)"
+        R"({
             "name": "contract_index_long_double_v0", "fields": [
                 { "type": "name", "name": "code" },
                 { "type": "name", "name": "scope" },
@@ -653,9 +653,10 @@ extern const char* const state_history_plugin_abi = R"({
         { "name": "resource_limits_ratio", "types": ["resource_limits_ratio_v0"] },
         { "name": "elastic_limit_parameters", "types": ["elastic_limit_parameters_v0"] },
         { "name": "resource_limits_config", "types": ["resource_limits_config_v0"] },
-        { "name": "block_signing_authority", "types": ["block_signing_authority_v0"] }
-    ],
-    "tables": [
+        { "name": "block_signing_authority", "types": ["block_signing_authority_v0"] },
+        { "name": "transaction_trace_msg", "types": ["transaction_trace_exception", "transaction_trace"] }
+    ],)"
+    R"("tables": [
         { "name": "account", "type": "account", "key_names": ["name"] },
         { "name": "account_metadata", "type": "account_metadata", "key_names": ["name"] },
         { "name": "code", "type": "code", "key_names": ["vm_type", "vm_version", "code_hash"] },
