@@ -210,7 +210,7 @@ namespace detail {
 constexpr inline uint64_t string_to_name_strict(std::string_view str) {
    if(auto r = try_string_to_name_strict(str)) return r.val;
    else check(false, convert_stream_error(r.valid));
-   #ifdef __GNUC__ // GCC, Clang, ICC
+#ifdef __GNUC__ // GCC, Clang, ICC
    __builtin_unreachable();
 #elifdef _MSC_VER // MSVC
    __assume(false);

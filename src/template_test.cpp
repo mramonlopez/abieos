@@ -99,8 +99,10 @@ void test_int(eosio::abi& abi1, eosio::abi& abi2) {
    }
 }
 
+#ifndef ABIEOS_NO_INT128
 using int128 = __int128;
 using uint128 = unsigned __int128;
+#endif
 using eosio::varint32;
 using eosio::varuint32;
 using eosio::float128;
@@ -153,6 +155,7 @@ int main() {
    test_int<uint32_t>(abi, new_abi);
    test_int<int64_t>(abi, new_abi);
    test_int<uint64_t>(abi, new_abi);
+#ifndef ABIEOS_NO_INT128
    test(int128{}, abi, new_abi);
    test(int128{0x1}, abi, new_abi);
    test(int128{-1}, abi, new_abi);
@@ -163,6 +166,7 @@ int main() {
    test(uint128(-1), abi, new_abi);
    test(uint128(std::numeric_limits<int128>::max()), abi, new_abi);
    test(uint128(std::numeric_limits<int128>::min()), abi, new_abi);
+#endif
    test(varuint32{0}, abi, new_abi);
    test(varuint32{1}, abi, new_abi);
    test(varuint32{0xFFFFFFFFu}, abi, new_abi);

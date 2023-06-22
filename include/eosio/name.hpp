@@ -162,21 +162,31 @@ void to_json(const name& obj, S& stream) {
    to_json(eosio::name_to_string(obj.value), stream);
 }
 
-#ifdef __GNUC__ // GCC, Clang, ICC
+//#ifdef __GNUC__ // GCC, Clang, ICC
 
-inline namespace literals {
+namespace literals {
 #if defined(__clang__)
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Wgnu-string-literal-operator-template"
 #endif
-   template <typename T, T... Str>
+
+#ifdef __GNUC__ // GCC, Clang, ICC
+template <typename T, T... Str>
    inline constexpr name operator""_n() {
-      return name(string_to_name_strict<Str...>()); }
+      return name(string_to_name_strict<Str...>());
+   }
+ #else
+   template <char... Str>
+   inline constexpr name operator""_n() {
+      return name(string_to_name_strict<Str...>());
+   }
+   inline constexpr name operator""_n(const char* s, size_t) { return name(string_to_name_strict(s)); }
+ #endif
    inline constexpr name operator""_h(const char* s, size_t) { return name( hash_name(s) ); }
 #if defined(__clang__)
 # pragma clang diagnostic pop
 #endif
 } // namespace literals
-#endif
+//#endif
 
 } // namespace eosio
