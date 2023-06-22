@@ -1,5 +1,5 @@
 #include <eosio/abi.hpp>
-#include "abieos.hpp"
+#include <abieos/abieos.hpp>
 
 using namespace eosio;
 

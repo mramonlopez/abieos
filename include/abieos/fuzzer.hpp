@@ -1,6 +1,6 @@
 #pragma once
 
-#include "abieos.h"
+#include <abieos/abieos.h>
 #include <string.h>
 
 enum fuzzer_operation {

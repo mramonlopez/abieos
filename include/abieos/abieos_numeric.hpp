@@ -9,7 +9,7 @@
 #include <string_view>
 #include <eosio/from_json.hpp>
 
-#include "abieos_ripemd160.hpp"
+#include <abieos/abieos_ripemd160.hpp>
 
 #define ABIEOS_NODISCARD [[nodiscard]]
 

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "abieos.hpp"
+#include <abieos/abieos.hpp>
 
 #include <exception>
 

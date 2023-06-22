@@ -1,8 +1,8 @@
 // copyright defined in abieos/LICENSE.txt
 
-#include "abieos.h"
-#include "abieos.hpp"
-#include "fuzzer.hpp"
+#include <abieos/abieos.h>
+#include <abieos/abieos.hpp>
+#include <abieos/fuzzer.hpp>
 #include "rapidjson/document.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/writer.h"
