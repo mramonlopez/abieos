@@ -96,9 +96,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES MSVC)
     target_compile_options(abieos PRIVATE /Zc:preprocessor)
     target_compile_options(abieos_module PRIVATE /Zc:preprocessor)
     target_compile_options(test_abieos PRIVATE /Zc:preprocessor)
-    target_compile_options(test_abieos_template PRIVATE /Zc:preprocessor)
     target_compile_options(test_abieos_key PRIVATE /Zc:preprocessor)
     target_compile_options(test_abieos_reflect PRIVATE /Zc:preprocessor)
+
+    if(NOT ABIEOS_NO_INT128)
+      target_compile_options(test_abieos_template PRIVATE /Zc:preprocessor)
+    endif()
 endif()
 
 if (NOT ABIEOS_ONLY_LIBRARY)
