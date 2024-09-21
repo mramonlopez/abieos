@@ -10,6 +10,7 @@
 #include <eosio/from_json.hpp>
 
 #include <abieos/abieos_ripemd160.hpp>
+#include <abieos/int128.hpp>
 
 #define ABIEOS_NODISCARD [[nodiscard]]
 
@@ -57,7 +58,7 @@ void negate(std::array<uint8_t, size>& a) {
 template <auto size>
 inline void decimal_to_binary(std::array<uint8_t, size>& result,
                                                               std::string_view s) {
-    memset(result.begin(), 0, result.size());
+    memset(result.data(), 0, result.size());
     for (auto& src_digit : s) {
        eosio::check(!(src_digit < '0' || src_digit > '9'),
             eosio::convert_json_error(eosio::from_json_error::expected_int));

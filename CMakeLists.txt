@@ -35,7 +35,15 @@ endif()
 find_package(Threads)
 include(GNUInstallDirs)
 
-add_library(abieos STATIC src/abi.cpp src/crypto.cpp include/eosio/fpconv.c)
+add_library(abieos STATIC src/abi.cpp src/crypto.cpp include/eosio/fpconv.c
+  include/abieos/abieos.hpp 
+  include/abieos/abieos.h 
+  include/abieos/fuzzer.hpp 
+  include/abieos/abieos_exception.hpp 
+  include/abieos/abieos_numeric.hpp
+  include/abieos/abieos_ripemd160.hpp
+  include/abieos/int128.hpp)
+  
 target_include_directories(abieos PUBLIC 
                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/include" 
                           "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/external/rapidjson/include"
@@ -105,11 +113,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES MSVC)
 endif()
 
 if (NOT ABIEOS_ONLY_LIBRARY)
-add_subdirectory(tools)
+  add_subdirectory(tools)
 endif()
 
 if(ABIEOS_INSTALL_COMPONENT)
-   set(INSTALL_COMPONENT_ARGS COMPONENT ${ABIEOS_INSTALL_COMPONENT} EXCLUDE_FROM_ALL)
+  set(INSTALL_COMPONENT_ARGS COMPONENT ${ABIEOS_INSTALL_COMPONENT} EXCLUDE_FROM_ALL)
 endif()
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/eosio DESTINATION include ${INSTALL_COMPONENT_ARGS})

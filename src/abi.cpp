@@ -1,5 +1,7 @@
 #include <eosio/abi.hpp>
 #include <abieos/abieos.hpp>
+#include <abieos/int128.hpp>
+#include <string>
 
 using namespace eosio;
 

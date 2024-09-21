@@ -1,5 +1,6 @@
 #include <eosio/to_key.hpp>
 #include <abieos/abieos.hpp>
+#include <abieos/int128.hpp>
 #include <eosio/name.hpp>
 
 int error_count;
